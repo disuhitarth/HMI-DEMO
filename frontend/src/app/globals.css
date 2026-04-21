@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --bg: #07070f;
+  --surface: #0f0f1a;
+  --card: #15152a;
+  --border: #252540;
+  --green: #00ff88;
+  --red: #ff2244;
+  --amber: #ffaa00;
+  --blue: #00aaff;
+  --text-primary: #e8e8f4;
+  --text-secondary: #7777aa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.mono {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.orbitron {
+  font-family: 'Orbitron', monospace;
+}
+
+@keyframes passGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 20px #00ff88, 0 0 40px #00ff8866;
+  }
+  50% {
+    text-shadow: 0 0 30px #00ff88, 0 0 60px #00ff8899;
+  }
+}
+
+@keyframes failFlash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes screenFlash {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes pulseOpacity {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-pass-glow {
+  animation: passGlow 2s ease-in-out infinite;
+}
+
+.animate-fail-flash {
+  animation: failFlash 0.5s ease-in-out infinite;
+}
+
+.animate-screen-flash {
+  animation: screenFlash 0.8s ease-out forwards;
+}
+
+.animate-scanline::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(transparent, #00ff8811, transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-in forwards;
+}
+
+.animate-pulse-opacity {
+  animation: pulseOpacity 1.5s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
