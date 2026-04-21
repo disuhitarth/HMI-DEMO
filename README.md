@@ -27,27 +27,27 @@ The platform operates on a decoupled, bi-directional architecture ensuring high-
 ```mermaid
 graph TD
     %% Define Nodes
-    Cam[Camera Feed (OpenCV)]
-    YOLO[Object Detection (YOLOv8)]
-    ZoneTrack[Zone Tracker]
-    Gemini[Gemini 2.5 Vision API]
-    Backend[FastAPI / WebSocket Server]
-    Frontend[Next.js React Dashboard]
-    GlobalStore[Zustand State Store]
+    Cam["Camera Feed (OpenCV)"]
+    YOLO["Object Detection (YOLOv8)"]
+    ZoneTrack["Zone Tracker"]
+    Gemini["Gemini 2.5 Vision API"]
+    Backend["FastAPI / WebSocket Server"]
+    Frontend["Next.js React Dashboard"]
+    GlobalStore["Zustand State Store"]
     
     %% Backend Pipeline
-    Cam -->|Raw Frames| YOLO
-    YOLO -->|Bounding Boxes| ZoneTrack
-    ZoneTrack -->|In-Zone Crops| Gemini
-    Gemini -.->|Language Inference| ZoneTrack
+    Cam -->|"Raw Frames"| YOLO
+    YOLO -->|"Bounding Boxes"| ZoneTrack
+    ZoneTrack -->|"In-Zone Crops"| Gemini
+    Gemini -.->|"Language Inference"| ZoneTrack
     
     %% API & Sockets
-    ZoneTrack -->|Frame + Metadata| Backend
-    Backend -->|WebSocket 60Hz| Frontend
+    ZoneTrack -->|"Frame + Metadata"| Backend
+    Backend -->|"WebSocket 60Hz"| Frontend
     
     %% Frontend Sync
     Frontend --> GlobalStore
-    GlobalStore -->|Renders| UI[KPIs, Logs, Alerts, Canvas]
+    GlobalStore -->|"Renders"| UI["UI: KPIs, Logs, Alerts"]
 ```
 
 ## 🔮 Future Roadmap
